@@ -1,18 +1,17 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Name from "./Name";
-import React, { Component } from "react";
-import { render } from "@testing-library/react";
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import Main from "./routes/Main";
 
 function App() {
-  render();
-  {
-    return (
-      <div>
-        <Name />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <BrowserRouter>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/main" component={Main} />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
