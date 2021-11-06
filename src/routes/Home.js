@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-class Name extends Component {
+class Home extends Component {
   state = {
     name: "",
   };
@@ -32,4 +32,4 @@ class Name extends Component {
   }
 }
 
-export default Name;
+export default Home;
