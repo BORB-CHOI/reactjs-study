@@ -1,0 +1,13 @@
+.TodoItem {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    margin-left: 30px;
+}
+
+.Text {
+    flex: 1;
+    font-size: 21px;
+    color: #495057;
+}
