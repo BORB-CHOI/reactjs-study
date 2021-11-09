@@ -1,0 +1,14 @@
+.TodoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.text {
+  font-size: 21px;
+  color: #495057;
+}

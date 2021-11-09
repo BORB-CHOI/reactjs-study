@@ -1,23 +1,21 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
+import TodoHead from "../components/Top";
+import TodoBottom from "../components/Bottom";
+import TodoList from "../components/TodoList";
+import TodoEdit from "../components/TodoEdit";
 import "./Main.css";
-import {Link} from "react-router-dom";
 
+const Main = (data) => {
+  const { location: state } = data;
+  const isEdit = true;
 
-class Main extends Component {
-  render() {
-    const { location } = this.props;
-    console.log(this.props);
-    return (
-        <div className="container">
-          <div>
-            안녕하세요 {location.state.name}님!
-          </div>
-            <Link to= "/todoTemplate">
-                <button>To do List</button>
-            </Link>
-        </div>
+  return (
+    <div className="main-container">
+      <TodoHead props={state} />
+      {isEdit ? <TodoList /> : <TodoEdit />}
+      <TodoBottom />
+    </div>
   );
-  }
-}
+};
 
 export default Main;
