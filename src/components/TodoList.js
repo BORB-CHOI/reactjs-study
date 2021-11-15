@@ -1,24 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../context";
 import Todo from "./Todo";
 import "./TodoList.css";
 
-const fakeInProgressTodos = [
-  { id: 1, title: "산책" },
-  { id: 2, title: "react 공부하기" },
-  { id: 3, title: "강의 듣기" },
-  { id: 4, title: "과제 하기" },
-];
-
-const fakeDoneTodos = [
-  { id: 1, title: "산책" },
-  { id: 2, title: "react 공부하기" },
-  { id: 3, title: "강의 듣기" },
-  { id: 4, title: "과제 하기" },
-];
-
 const TodoList = () => {
-  const [inProgressTodos] = React.useState(fakeInProgressTodos);
-  const [doneTodos] = React.useState(fakeDoneTodos);
+  const { isFormView, setContext } = useContext(Context);
+  const [inProgressTodoList, setInProgressTodoList] = useState([]);
+  const [doneTodoList, setDoneTodoList] = useState([]);
+
+  const getTodoList = async () => {
+    const todoList = JSON.parse(localStorage.getItem("todoList"));
+    let inProgressList = [];
+    let doneList = [];
+
+    if (todoList) {
+      await todoList.forEach((todo) => {
+        if (todo.completed) {
+          doneList.push(todo);
+        } else {
+          inProgressList.push(todo);
+        }
+      });
+      setInProgressTodoList(inProgressList);
+      setDoneTodoList(doneList);
+    }
+  };
+
+  const clickAdd = () => {
+    setContext(!isFormView);
+  };
+
+  ///////////////////////////////////////////////////////////////////////////////
+  const clickEdit = () => {
+    setContext(!isFormView); // 이건 남겨주세요! form view로 전환하는 코드 입니다.
+
+    // 선택한 Todo의 값을 넘기는 코드를 작성해주세요!
+  };
+  ///////////////////////////////////////////////////////////////////////////////
 
   const enableDragSort = (listClass) => {
     const sortableLists = document.getElementsByClassName(listClass);
@@ -70,25 +88,37 @@ const TodoList = () => {
     enableDragSort("drag-sort-enable");
   });
 
+  useEffect(() => {
+    getTodoList();
+  }, []);
+
   return (
-    <div className="todoList-container">
+    <div className="list-container">
       <div className="counts">
         <div className="inProgress-count">
-          할 일 {inProgressTodos.length}개 남음
+          할 일 {inProgressTodoList.length}개 남음
         </div>
-        <div className="done-count">{fakeDoneTodos.length}개 완료 됨</div>
+        <div className="done-count">{doneTodoList.length}개 완료 됨</div>
       </div>
       <div className="Todos">
-        <ul className="inProgressTodos drag-sort-enable">
-          {inProgressTodos.map(({ id, title }) => (
-            <Todo key={id} title={title} />
+        <ul className="in-progress-todo-list drag-sort-enable">
+          {inProgressTodoList.map((data) => (
+            <Todo key={data.id} data={data} />
           ))}
         </ul>
-        <ul className="doneTodos drag-sort-enable">
-          {doneTodos.map(({ id, title }) => (
-            <Todo key={id} title={title} />
+        <ul className="done-todo-list drag-sort-enable">
+          {doneTodoList.map((data) => (
+            <Todo key={data.id} data={data} />
           ))}
         </ul>
+      </div>
+      <div className="list__buttons">
+        <button className="btn-add" onClick={clickAdd}>
+          Add
+        </button>
+        <button className="btn-edit" onClick={clickEdit}>
+          Edit
+        </button>
       </div>
     </div>
   );

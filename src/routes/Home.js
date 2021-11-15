@@ -5,11 +5,14 @@ import "./Home.css";
 const Home = () => {
   const [name, setName] = useState("");
 
-  const getName = () => setName(localStorage.getItem("name"));
+  const getName = () =>
+    setName(localStorage.getItem("name") ? localStorage.getItem("name") : "");
 
   const handleChange = (event) => (event ? setName(event.target.value) : null);
 
-  const handleClick = () => localStorage.setItem("name", name);
+  const handleClick = async () => {
+    localStorage.setItem("name", name);
+  };
 
   useEffect(() => {
     getName();
