@@ -6,14 +6,22 @@ Wink club study - The ReactJS
 
 Cteate ToDoList with react
 
+React hook 방식을 사용한 적당한 ToDoList 프로그램입니다.
+
 ## Pages:
 
-- Home
-- Main
+- [x] Home
+- [ ] Main
 
 ## Function:
 
-- [x] Name input
-- [ ] Create Schedule
+- [x] Name Input
+- [x] Add Schedule
 - [ ] Update Schedule
-- [ ] Delete Schedule
+- [x] Add Schedule
+- [x] LocalStorage Save
+
+- [x] Drag Schedule
+- [ ] Drag Add Schedule
+- [ ] Drag Update Schedule
+- [ ] Drag Remove Schedule
