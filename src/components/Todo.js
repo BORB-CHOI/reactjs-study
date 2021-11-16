@@ -31,9 +31,11 @@ const Todo = ({ data }) => {
     <li className="TodoItem">
       <div className="text">{todo.title}</div>
       <div className="item__buttons">
-        <button className="btn-move">Move</button>
+        <button className="btn-move">
+          MOVE
+        </button>
         <button className="btn-remove" onClick={clickRemove}>
-          Remove
+          REMOVE
         </button>
       </div>
     </li>

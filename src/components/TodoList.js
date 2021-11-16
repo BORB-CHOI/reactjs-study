@@ -114,10 +114,10 @@ const TodoList = () => {
       </div>
       <div className="list__buttons">
         <button className="btn-add" onClick={clickAdd}>
-          Add
+          ADD
         </button>
         <button className="btn-edit" onClick={clickEdit}>
-          Edit
+          EDIT
         </button>
       </div>
     </div>
