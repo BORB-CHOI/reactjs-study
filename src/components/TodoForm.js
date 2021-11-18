@@ -48,22 +48,26 @@ const TodoForm = () => {
   return (
     <form className="form-container">
       <input
+        id = "todo-title"
         name={TITLE_NAME}
+        placeholder="Enter the to-do title here."
         type="text"
         value={todo.title}
         onChange={handleChange}
       />
       <textarea
+        id = "todo-text"
+        placeholder="Enter the description of the to-do list here."
         name={TEXTAREA_NAME}
         value={todo.description}
         onChange={handleChange}
       />
       <div className="form__buttons">
         <button type="button" className="btn-save" onClick={clickSave}>
-          Save
+          SAVE
         </button>
         <button type="button" className="btn-cancel" onClick={clickCancel}>
-          Cancel
+          CANCEL
         </button>
       </div>
     </form>

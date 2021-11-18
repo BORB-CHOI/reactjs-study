@@ -9,6 +9,25 @@
 }
 
 .text {
-  font-size: 21px;
+  font-size: 18px;
   color: #495057;
+}
+
+.btn-move {
+  width: 4rem;
+  height: 2rem;
+  font-size: 5px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+}
+
+.btn-remove {
+  width: 4rem;
+  height: 2rem;
+  font-size: 5px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-left: 5px;
 }

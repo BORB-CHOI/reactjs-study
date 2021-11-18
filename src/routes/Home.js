@@ -25,14 +25,17 @@ const Home = () => {
   return (
     <div className="home-container">
       <form>
+        <div id="title">
+          Welcome. <br/>Make your own To-do-list.
+        </div>
         <input
           id="name"
-          placeholder="이름"
+          placeholder="  name"
           value={name}
           onChange={handleChange}
         />
         <Link to={{ pathname: "/main", state: { name } }}>
-          <button type="submit" onClick={handleClick}>
+          <button id="btnNext" type="submit" onClick={handleClick}>
             Next
           </button>
         </Link>
