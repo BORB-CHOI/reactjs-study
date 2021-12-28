@@ -1,12 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../context";
+// import { Context } from "../context";
+import { useSelector, useDispatch } from "react-redux";
 import "./TodoForm.css";
 
 const TITLE_NAME = "title";
 const TEXTAREA_NAME = "description";
 
 const TodoForm = () => {
-  const { isFormView, setContext } = useContext(Context);
+  // const { isFormView, setContext } = useContext(Context);
+  const { isFormView } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   const [todo, setTodo] = useState({
     id: 1,
     title: "",
@@ -26,11 +30,13 @@ const TodoForm = () => {
       localStorage.setItem("todoList", JSON.stringify(todoList));
     }
 
-    setContext(!isFormView);
+    // setContext(!isFormView);
+    dispatch({ type: "store/CHANGE" });
   };
 
   const clickCancel = () => {
-    setContext(!isFormView);
+    // setContext(!isFormView);
+    dispatch({ type: "store/CHANGE" });
   };
 
   const handleChange = (event) => {
@@ -48,7 +54,7 @@ const TodoForm = () => {
   return (
     <form className="form-container">
       <input
-        id = "todo-title"
+        id="todo-title"
         name={TITLE_NAME}
         placeholder="Enter the to-do title here."
         type="text"
@@ -56,7 +62,7 @@ const TodoForm = () => {
         onChange={handleChange}
       />
       <textarea
-        id = "todo-text"
+        id="todo-text"
         placeholder="Enter the description of the to-do list here."
         name={TEXTAREA_NAME}
         value={todo.description}

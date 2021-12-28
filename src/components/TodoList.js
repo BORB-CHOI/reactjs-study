@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../context";
+// import { Context } from "../context";
+import { useSelector, useDispatch } from "react-redux";
 import Todo from "./Todo";
 import "./TodoList.css";
 
-const TodoList = () => {
-  const { isFormView, setContext } = useContext(Context);
+const TodoList = (props) => {
+  // const { isFormView, setContext } = useContext(Context);
+  const isFormView = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [inProgressTodoList, setInProgressTodoList] = useState([]);
   const [doneTodoList, setDoneTodoList] = useState([]);
 
@@ -27,13 +30,14 @@ const TodoList = () => {
   };
 
   const clickAdd = () => {
-    setContext(!isFormView);
+    // setContext(!isFormView);
+    dispatch({ type: "store/CHANGE" });
   };
 
   ///////////////////////////////////////////////////////////////////////////////
   const clickEdit = () => {
-    setContext(!isFormView); // 이건 남겨주세요! form view로 전환하는 코드 입니다.
-
+    // setContext(!isFormView); // 이건 남겨주세요! form view로 전환하는 코드 입니다.
+    dispatch({ type: "store/CHANGE" });
     // 선택한 Todo의 값을 넘기는 코드를 작성해주세요!
   };
   ///////////////////////////////////////////////////////////////////////////////
